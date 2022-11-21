@@ -11,7 +11,16 @@ local function join(delimiter, strings)
   return result
 end
 
+local function split(delimiter, string)
+  if _G.strsplittable then
+    return strsplittable(delimiter, string)
+  else
+    return { strsplit(delimiter, string) }
+  end
+end
+
 String = {
   startsWith = startsWith,
-  join = join
+  join = join,
+  split = split
 }
